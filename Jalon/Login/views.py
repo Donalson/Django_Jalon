@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib import messages
 
 # Funcion de vista para mostrar el formulario de inicio de sesion
@@ -17,8 +17,9 @@ def login(request):
         #En caso de que la informacion sea la necesario
         if(user in usuarios and password in contraseñas):
             #Codigo si conincide la informacion
-            respuesta = 'Sesion iniciada, Bienvenido: {}'.format(user)
-            return HttpResponse(respuesta)
+            #respuesta = 'Sesion iniciada, Bienvenido: {}'.format(user)
+            #return HttpResponse(respuesta)
+            return redirect('/')
         #En caso contrario
         else:
             messages.error(request, 'Usuario o contraseña incorrecta')
