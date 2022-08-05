@@ -45,6 +45,7 @@ class Usuario(models.Model):
     Categoria = models.IntegerField(blank=True, null=True)
     Usuario_FK = models.IntegerField(blank=True, null=True)
     Nombre_Completo = models.CharField(max_length=50)
+    Docidentificacion = models.CharField(max_length=15)
     Telefono = models.CharField(max_length=10, blank=True, null=True,)
     Foto = models.ImageField(upload_to=ruta_personalizada_foto, null=True, blank=True)
     Verificado = models.BooleanField(default=False)

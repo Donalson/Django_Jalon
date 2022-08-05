@@ -1,12 +1,53 @@
 {% extends 'Jalon/layaout.html' %}
 {% load static %}
 
-{% block title %}Usuario{% endblock %}
+{% block title %}Usuario {{ usuario.Usuario}}{% endblock %}
 
 {% block CustomCSS %}
     <!-- No hay css personalizado de momento para esta pagina -->
 {% endblock %}
 
 {% block content %}
-Vacio de momento
+    <br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-4 offset-5">
+                <img style="width: 200px;height: 200px; border-radius:150px;" src="{{ usuario.Foto.url }}" class="img-thumbnail">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <p><strong>{{ usuario.Nombre_Completo }}</strong></p>
+                <p>DPI: {{ usuario.Docidentificacion}}</p>
+                <p>Telefono: {{ usuario.Telefono }}</p>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-1">
+                <img style="width: 200px;height: 200px;" src="{{ usuario.Pose1.url }}" class="img-thumbnail">
+            </div>
+            <div class="col-2">
+                <img style="width: 200px;height: 200px;" src="{{ usuario.Selfie1.url }}" class="img-thumbnail">
+            </div>
+            <div class="col-2"> 
+                <img style="width: 200px;height: 200px;" src="{{ usuario.Pose2.url }}" class="img-thumbnail">
+            </div>
+            <div class="col-2">
+                <img style="width: 200px;height: 200px;" src="{{ usuario.Selfie2.url }}" class="img-thumbnail">
+            </div>
+            <div class="col-2">
+                <img style="width: 200px;height: 200px;" src="{{ usuario.Dpi.url }}" class="img-thumbnail">
+            </div>
+        </div>
+    </div>
+    <hr size="2px" color="black" />
+    <div class="mb-3">
+        <label class="form-label">Deja un mensaje al conductor (opcional)</label>
+        <textarea class="form-control mb-3" name="Mensaje" rows="3"></textarea>
+        <center>
+            <button type="button" class="btn btn-danger btn-lg">Denegar</button>
+            <button type="button" class="btn btn-success btn-lg">Aprobar</button>
+        </center>
+    </div>
 {% endblock %}

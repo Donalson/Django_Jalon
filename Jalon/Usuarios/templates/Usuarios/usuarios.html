@@ -16,7 +16,9 @@
                     <img src="{{ usuario.Foto.url }}" class="img-thumbnail rounded float-start">
                 </div>
                 <div class="col-8">
-                    <a class="text-black text-decoration-none fs-1 align-middle" href="usuario/1">{{ usuario.Nombre_Completo }}</a>
+                    {# Se intento utilizar {% url 'usuario' usuario.id %} para crear los links dinamicos pero lanzaba un error donde decia que no encotraba la url o funcion con ese nombre #}
+                    {# Se intento utilizar tambien localhost:8000/usuario/{{usuario.id}} en el href pero tampoco funciono #}
+                    <a class="text-black text-decoration-none fs-1 align-middle" href="{% url 'usuario' %}">{{ usuario.Nombre_Completo }}</a>
                 </div>
                 <div class="col-2">
                     <p class="text-muted align-middle">{{ usuario.created }}</p>

@@ -10,5 +10,8 @@ def usuarios(request):
 
 @login_required(login_url='login/')
 def usuario(request, id):
-    user = Usuario.objects.filter(id=id)
-    return render(request, 'Usuarios/usuario.html', {'usuario':user})
+    user = Usuario.objects.get(id=id)
+    if(user.Verificado == False):
+        return render(request, 'Usuarios/usuario.html', {'usuario':user})
+    else:
+        return render(request, 'Usuarios/usuario.html')

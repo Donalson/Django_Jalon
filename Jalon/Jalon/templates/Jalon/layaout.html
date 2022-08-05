@@ -24,7 +24,7 @@
     {% load static %}
 </head>
 <body>
-    <!-- Navbar de la pagina -->
+    {# Navbar de la pagina #}
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #00B2BB">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'Index' %}">
@@ -48,7 +48,7 @@
       </nav>
 
     <div class="container">
-        <!-- Verificacion si hay mensajes, en casi de haber se recorren para imprimir los mensajes en pantalla -->
+        {# Verificacion si hay mensajes, en casi de haber se recorren para imprimir los mensajes en pantalla #}
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'error' %}<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
@@ -58,6 +58,8 @@
                 </div>
             {% endfor %}
         {% endif %}
+
+        {# Bloque de contenido a mostrar #}
         {% block content %}{% endblock %}
     </div>
 </body>
