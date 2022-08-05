@@ -35,11 +35,11 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item {% if request.path == '/usuarios/'%}active{% endif %}">
-                <a class="nav-link" href="{% url 'Usuarios' %}">Usuarios</a>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path|slice:':8' == '/usuarios/' %}active{% endif %}" href="{% url 'Usuarios' %}">Usuarios</a>
               </li>
-              <li class="nav-item {% if request.path == '/depositos/'%}active{% endif %}">
-                <a class="nav-link" href="#">Depositos</a>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path|slice:':9' == '/depositos/' %}active{% endif %}" href="#">Depositos</a>
               </li>
             </ul>
             <a class="btn btn-outline-danger" href="{% url 'Logout' %}" role="button">Cerrar Sesion</a>
