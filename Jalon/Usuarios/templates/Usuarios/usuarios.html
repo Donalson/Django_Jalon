@@ -1,0 +1,27 @@
+{% extends 'Jalon/layaout.html' %}
+{% load static %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block CustomCSS %}
+    <!-- No hay css personalizado de momento para esta pagina -->
+{% endblock %}
+
+{% block content %}
+    <br><br><br>
+    <div class="container">
+        {% for usuario in usuarios %}
+            <div class="row mb-3">
+                <div class="col-2">
+                    <img src="{{ usuario.Foto.url }}" class="img-thumbnail rounded float-start">
+                </div>
+                <div class="col-8">
+                    <a class="text-black text-decoration-none fs-1 align-middle" href="usuario/1">{{ usuario.Nombre_Completo }}</a>
+                </div>
+                <div class="col-2">
+                    <p class="text-muted align-middle">{{ usuario.created }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
