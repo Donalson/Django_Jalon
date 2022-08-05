@@ -43,11 +43,21 @@
     </div>
     <hr size="2px" color="black" />
     <div class="mb-3">
-        <label class="form-label">Deja un mensaje al conductor (opcional)</label>
-        <textarea class="form-control mb-3" name="Mensaje" rows="3"></textarea>
-        <center>
-            <button type="button" class="btn btn-danger btn-lg">Denegar</button>
-            <button type="button" class="btn btn-success btn-lg">Aprobar</button>
-        </center>
+        <form class="form-control" action="/verificacion/" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="usuario" value="{{ usuario.Usuario }}">
+            <label class="form-label">Deja un mensaje al conductor (opcional)</label>
+            <textarea class="form-control mb-3" name="Mensaje" rows="5"></textarea>
+            <select class="form-select mb-3" name="Verificado" required>
+                <option selected value=''>Decision</option>
+                <option value=0>Denegar</option>
+                <option value=1>Aprobar</option>
+            </select>
+            <center>
+                <button type="submit" class="btn btn-success btn-lg">Actualizar</button>
+                <a href="{% url 'Usuarios' %}" class="btn btn-danger btn-lg">Cancelar</a>
+            </center>
+        </form>
     </div>
+    <br><br><br>
 {% endblock %}

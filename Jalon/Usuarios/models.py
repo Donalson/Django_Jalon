@@ -48,7 +48,7 @@ class Usuario(models.Model):
     Docidentificacion = models.CharField(max_length=15)
     Telefono = models.CharField(max_length=10, blank=True, null=True,)
     Foto = models.ImageField(upload_to=ruta_personalizada_foto, null=True, blank=True)
-    Verificado = models.BooleanField(default=False)
+    Verificado = models.BooleanField(null=True, blank=True)
     Pose1 = models.ImageField(upload_to=ruta_personalizada_P1, null=True, blank=True)
     Pose2 = models.ImageField(upload_to=ruta_personalizada_P2, null=True, blank=True)
     Selfie1 = models.ImageField(upload_to=ruta_personalizada_S1, null=True, blank=True)
