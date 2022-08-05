@@ -29,7 +29,7 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'Index' %}">
             <img src="{% static 'Jalon/img/Logo.PNG' %}" alt="" width="30" height="24">
-            Dashboard {{usuario.username}}</a>
+            Dashboard {{ user.username }}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -42,7 +42,7 @@
                 <a class="nav-link" href="#">Depositos</a>
               </li>
             </ul>
-            <a class="btn btn-outline-danger" href="{% url 'Login' %}" role="button">Cerrar Sesion</a>
+            <a class="btn btn-outline-danger" href="{% url 'Logout' %}" role="button">Cerrar Sesion</a>
           </div>
         </div>
       </nav>

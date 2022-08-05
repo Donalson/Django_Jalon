@@ -7,8 +7,8 @@ def login(request):
     #Si la peticion viene con metodo post ejecutar este codigo
     if request.method == 'POST':
         #Obtenemos los datos entrantes del formulario
-        user = request.POST['usuario']
-        password = request.POST['contraseña']
+        user = request.POST['username']
+        password = request.POST['password']
 
         #Aqui deberi ir la logica para verificar el login en la api 
         ############################################################
@@ -27,13 +27,5 @@ def login(request):
     #Si la peticion no es de tipo POST
     else:
         return render(request, 'Login/login.html', {})
-
-# Funcion de vista para verificar que el usuario, contraseña y categoria conincidan con la api
-def verificacion(request):
-
-    return HttpResponse('Verificacion de URL')
-
-# Funcion de vista por si se necesita registrar usuarios
-def registrar(request):
 
     return HttpResponse('URL por si se necesita registrar usuarios')
