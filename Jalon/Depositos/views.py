@@ -23,7 +23,7 @@ def verificacion_deposito(request):
 
     if request.method == 'POST':
         id = request.POST['id']
-        user = request.POST['user']
+        user = request.POST['usuario']
         mensaje = request.POST['Mensaje']
         depositado = int(request.POST['Depositado'])
         if depositado == 0:

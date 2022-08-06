@@ -1,7 +1,7 @@
 {% extends 'Jalon/layaout.html' %}
 {% load static %}
 
-{% block title %}Usuario {{ usuario.Usuario}}{% endblock %}
+{% block title %}Deposito del usuario {{ Deposito.Usuario.Usuario}}{% endblock %}
 
 {% block CustomCSS %}
     <!-- No hay css personalizado de momento para esta pagina -->
@@ -12,50 +12,43 @@
     <div class="container">
         <div class="row">
             <div class="col-4 offset-5">
-                <img style="width: 200px;height: 200px; border-radius:150px;" src="{{ usuario.Foto.url }}" class="img-thumbnail">
+                <img style="width: 200px;height: 200px; border-radius:150px;" src="{{ Deposito.Usuario.Foto.url }}" class="img-thumbnail">
             </div>
         </div>
         <div class="row">
             <div class="col text-center">
-                <p><strong>{{ usuario.Nombre_Completo }}</strong></p>
-                <p>DPI: {{ usuario.Docidentificacion}}</p>
-                <p>Telefono: {{ usuario.Telefono }}</p>
+                <p><strong class="fs-2">{{ Deposito.Usuario.Nombre_Completo }}</strong><br>
+                Telefono: {{ Deposito.Usuario.Telefono }}<br>
+                Fecha: {{ Deposito.created }}<br><br>
+
+                <strong class="fs-2">Datos del banco</strong><br>
+                <strong>Cuenta Monetaria</strong><br>
+                {{ Deposito.Banco }}<br>
+                {{ Deposito.NoCuenta }}<br><br>
+
+                <strong class="fs-2">Monto a transferir</strong><br>
+                <strong class="fs-1">Q.{{ Deposito.Monto }}</strong>
+                </p>
                 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2 offset-1">
-                <img style="width: 200px;height: 200px;" src="{{ usuario.Pose1.url }}" class="img-thumbnail">
-            </div>
-            <div class="col-2">
-                <img style="width: 200px;height: 200px;" src="{{ usuario.Selfie1.url }}" class="img-thumbnail">
-            </div>
-            <div class="col-2"> 
-                <img style="width: 200px;height: 200px;" src="{{ usuario.Pose2.url }}" class="img-thumbnail">
-            </div>
-            <div class="col-2">
-                <img style="width: 200px;height: 200px;" src="{{ usuario.Selfie2.url }}" class="img-thumbnail">
-            </div>
-            <div class="col-2">
-                <img style="width: 200px;height: 200px;" src="{{ usuario.Dpi.url }}" class="img-thumbnail">
             </div>
         </div>
     </div>
     <hr size="2px" color="black" />
     <div class="mb-3">
-        <form class="form-control" action="/verificacion/" method="POST">
+        <form class="form-control" action="/verificacion_deposito/" method="POST">
             {% csrf_token %}
-            <input type="hidden" name="usuario" value="{{ usuario.Usuario }}">
+            <input type="hidden" name="id" value="{{ Deposito.id }}">
+            <input type="hidden" name="usuario" value="{{ Deposito.Usuario.Usuario }}">
             <label class="form-label">Deja un mensaje al conductor (opcional)</label>
             <textarea class="form-control mb-3" name="Mensaje" rows="5"></textarea>
-            <select class="form-select mb-3" name="Verificado" required>
+            <select class="form-select mb-3" name="Depositado" required>
                 <option selected value=''>Decision</option>
-                <option value=0>Denegar</option>
-                <option value=1>Aprobar</option>
+                <option value=0>Deposito Fallido</option>
+                <option value=1>Deposito Realizado</option>
             </select>
             <center>
                 <button type="submit" class="btn btn-success btn-lg">Actualizar</button>
-                <a href="{% url 'Usuarios' %}" class="btn btn-danger btn-lg">Cancelar</a>
+                <a href="{% url 'Depositos' %}" class="btn btn-danger btn-lg">Cancelar</a>
             </center>
         </form>
     </div>
