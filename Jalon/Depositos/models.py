@@ -5,8 +5,8 @@ from Usuarios.models import Usuario
 
 class Depositos(models.Model):
     Usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    Banco = models.CharField(max_length='20')
-    NoCuenta = models.CharField(max_length='20')
+    Banco = models.CharField(max_length=20)
+    NoCuenta = models.CharField(max_length=20)
     Monto = models.FloatField()
     Depositado = models.BooleanField(null=True, blank=True)
     Mensaje = models.TextField(null=True, blank=True)
