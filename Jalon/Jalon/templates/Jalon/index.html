@@ -6,15 +6,26 @@
 {% endblock %}
 
 {% block content %}
-{% if Usuarios %}
-    <p><strong class="fs-2">Usuarios pendientes de verificacion: {{ Usuarios }}</strong></p><br>
-{% else %}
-    <p><strong class="fs-2">Verificacion de usuarios al dia</strong></p><br>
-{% endif %}
 
-{% if Depositos %}
-    <p><strong class="fs-2">Depositos Pedientes de Verificacion: {{ Depositos }}</strong></p><br>
-{% else %}
-    <p><strong class="fs-2">Verificacion de depositos al dia</strong></p><br>
-{% endif %}
+
+<div class="card text-center">
+    <h5 class="card-header">Bienvenido {{ user.username }}</h5>
+    <div class="card-body">
+      <h5 class="card-title">Pedientes</h5>
+      <p class="card-text">
+        {% if Usuarios %}
+            Usuarios pendientes de verificacion: {{ Usuarios }}
+        {% else %}
+            Verificacion de usuarios al dia
+        {% endif %}
+        <br>
+        {% if Depositos %}
+            Depositos Pedientes de Verificacion: {{ Depositos }}
+        {% else %}
+        Verificacion de depositos al dia
+        {% endif %}
+      </p>
+      {# <a href="#" class="btn btn-primary">Go somewhere</a> #}
+    </div>
+</div>
 {% endblock %}
