@@ -3,9 +3,18 @@
 {% block title %}Incio{% endblock %}
 
 {% block CustomCSS %}
-    <link rel="stylesheet" href="{% static 'Jalon/css/index.css' %}">
 {% endblock %}
 
 {% block content %}
+{% if Usuarios %}
+    <p><strong class="fs-2">Usuarios pendientes de verificacion: {{ Usuarios }}</strong></p><br>
+{% else %}
+    <p><strong class="fs-2">Verificacion de usuarios al dia</strong></p><br>
+{% endif %}
 
+{% if Depositos %}
+    <p><strong class="fs-2">Depositos Pedientes de Verificacion: {{ Depositos }}</strong></p><br>
+{% else %}
+    <p><strong class="fs-2">Verificacion de depositos al dia</strong></p><br>
+{% endif %}
 {% endblock %}
