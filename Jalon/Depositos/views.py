@@ -4,12 +4,12 @@ from django.contrib import messages
 from .models import Depositos
 # Create your views here.
 
-@login_required(login_url='login/')
+@login_required(login_url='Login', redirect_field_name='luego')
 def depositos(request):
     DepositosLista = Depositos.objects.filter(Depositado=None)
     return render(request, 'Depositos/depositos.html', {'depositos':DepositosLista})
 
-@login_required(login_url='login/')
+@login_required(login_url='Login', redirect_field_name='luego')
 def deposito(request, id):
     deposito = Depositos.objects.get(id=id)
     if(deposito.Depositado == None):
@@ -18,7 +18,7 @@ def deposito(request, id):
         messages.warning(request, 'Parece que el deposito seleccionado ya ha sido clasificado')
         return redirect('Depositos')
 
-@login_required(login_url='login/')
+@login_required(login_url='Login', redirect_field_name='luego')
 def verificacion_deposito(request):
 
     if request.method == 'POST':

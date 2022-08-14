@@ -4,12 +4,12 @@ from django.contrib import messages
 from .models import Usuario
 # Create your views here.
 
-@login_required(login_url='login/')
+@login_required(login_url='Login', redirect_field_name='luego')
 def usuarios(request):
     Usuarios = Usuario.objects.filter(Verificado=None)
     return render(request, 'Usuarios/usuarios.html', {'usuarios':Usuarios})
 
-@login_required(login_url='login/')
+@login_required(login_url='Login', redirect_field_name='luego')
 def usuario(request, id):
     user = Usuario.objects.get(id=id)
     if(user.Verificado == None):
@@ -18,7 +18,7 @@ def usuario(request, id):
         messages.warning(request, 'Parece que el usuario seleccionado ya ha sido clasificado')
         return redirect('Usuarios')
 
-@login_required(login_url='login/')
+@login_required(login_url='Login', redirect_field_name='luego')
 def verificacion(request):
 
     if request.method == 'POST':
